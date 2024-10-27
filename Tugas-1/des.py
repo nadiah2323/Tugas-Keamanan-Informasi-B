@@ -89,13 +89,13 @@ S_BOX = [
 ]
 ]
 
-#Permut made after each SBox substitution for each round
+#Permut dibuat setelah tiap subtitusi SBox tiap round
 P = [16, 7, 20, 21, 29, 12, 28, 17,
      1, 15, 23, 26, 5, 18, 31, 10,
      2, 8, 24, 14, 32, 27, 3, 9,
      19, 13, 30, 6, 22, 11, 4, 25]
 
-#Final permut for datas after the 16 rounds
+#Final permut untuk data setelah 16 round
 PI_1 = [40, 8, 48, 16, 56, 24, 64, 32,
         39, 7, 47, 15, 55, 23, 63, 31,
         38, 6, 46, 14, 54, 22, 62, 30,
@@ -127,13 +127,13 @@ def bit_array_to_string(array):
 def binvalue(val, bitsize): 
     binval = bin(val)[2:] if isinstance(val, int) else bin(ord(val))[2:]
     if len(binval) > bitsize:
-        raise "binary value larger than the expected size"
+        raise "nilai biner lebih besar dari seharusnya"
     while len(binval) < bitsize:
         # Menambahkan 0 sebanyak yang diperlukan untuk mendapatkan ukuran yang diinginkan
         binval = "0"+binval 
     return binval
 
-# Membagi daftar menjadi sub-daftar dengan ukuran "n"
+# Membagi list menjadi sub-list dengan ukuran "n"
 def nsplit(s, n):
     return [s[k:k+n] for k in range(0, len(s), n)]
 
@@ -159,7 +159,7 @@ class des():
         if padding and action == ENCRYPT:
             self.addPadding()
         elif len(self.text) % 8 != 0:  # Jika tidak ada padding yang ditentukan, ukuran data harus kelipatan 8 byte
-            raise Exception("Data size should be multiple of 8")
+            raise Exception("Data size harus kelipatan 8")
         
         # Menghasilkan semua key
         self.generatekeys()  
@@ -203,7 +203,7 @@ class des():
         
     # Mengganti byte menggunakan SBOX
     def substitute(self, d_e):
-        # Membagi array bit menjadi sub-daftar 6 bit
+        # Membagi array bit menjadi sub-list 6 bit
         subblocks = nsplit(d_e, 6)
         result = list()
         # Untuk semua sublist
@@ -225,7 +225,7 @@ class des():
     def permut(self, block, table):  
         return [block[x-1] for x in table]
 
-    # Melakukan hal yang sama seperti permutasi tetapi untuk lebih jelas dinamakan    
+    # Melakukan hal yang sama seperti permutasi tetapi untuk lebih jelas dinamakan expand   
     def expand(self, block, table):  
         return [block[x-1] for x in table]
         
