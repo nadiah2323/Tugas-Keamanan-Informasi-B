@@ -1,4 +1,3 @@
-<br />**Kelas KI-B**
 
 **Anggota Kelompok:**
 - Sekar Ambar Arum-5025211041
