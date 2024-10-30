@@ -185,7 +185,6 @@ class DES:
 
     def encrypt(self, msg: str) -> str:
         msg = hex_to_bin(msg)
-        # print(f"msg: {split(msg, 8)}\nkey: {split(self.key, 8)}")
         msg = shuffle(msg, self.ip_table)
         if self.debug:
             print(f"shuffled msg: {split(msg, 8)}\n")
@@ -240,7 +239,6 @@ class DES:
         for i in range(16):
             self.K.append(shuffle(self.C[i+1] + self.D[i+1], self.pc2))
 
-# msg = "0123456712332332"
 HEADER = 64
 PORT = 5051
 FORMAT = 'utf-8'
